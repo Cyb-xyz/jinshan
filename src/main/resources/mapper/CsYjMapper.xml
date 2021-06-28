@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.CsYjMapper">
+
+    <!--城市预警-公安数据入库-->
+    <insert id="saveGA" parameterType="map">
+        insert into JINSHANXYZ."js_csyj_gasj"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{ALARM_TYPE},
+            #{AFCS},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+
+    <!--城市预警-消防警情数据入库-->
+    <insert id="saveXFJQ" parameterType="map">
+        insert into JINSHANXYZ."js_csyj_xfjq"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{DATE},
+            #{DATETIME},
+            #{OTHER},
+            #{ADDRESS},
+            #{ALERTTYPE},
+            #{PICKTIME},
+            #{ENDDATE},
+            #{YEAR},
+            #{IMPORTANT},
+            #{DELETEDAT},
+            #{ALERTCOUNT},
+            #{STREET},
+            #{DISPOSALSITUATION},
+            #{LIMIT},
+            #{OCCURRENCETIME},
+            #{DISPOSALOBJECT},
+            #{DATA_ID},
+            #{PAGE},
+            #{TIME},
+            #{KEYWORD},
+            #{STARTDATE},
+            #{ALERTCATEGORY},
+            #{UPDATEDAT},
+            #{CREATEDAT},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+
+
+</mapper>

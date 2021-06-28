@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.CSJTMapper">
+
+    <!--停车场数据入库-->
+    <insert id="saveTCC" parameterType="map">
+        insert into JINSHANXYZ.PARK_INFO
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{DATA_ID},
+            #{PARKID},
+            #{NAME},
+            #{ADDRESS},
+            #{LNG},
+            #{LAT},
+            #{TYPE},
+            #{COMPANY},
+            #{MANAGER},
+            #{MOBILE},
+            #{SPACESUM},
+            #{SPACELEFT},
+            #{SETVALUE},
+            #{MODE},
+            #{UPDATETIME},
+            #{DEVICEUPDATETIME},
+            #{DEVICESENDTIME},
+            #{DISTRICT},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+
+</mapper>

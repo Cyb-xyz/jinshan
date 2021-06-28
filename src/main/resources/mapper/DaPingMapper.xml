@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.DaPingMapper">
+
+    <!--存储大屏-小微站-模块（小微站模块数据）数据-->
+    <insert id="saveXWZ" parameterType="map">
+        insert into JINSHANXYZ."js_dp_xwz"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{BJNUM},
+            #{DWNUM},
+            #{WRSYNUM},
+            #{VAL},
+            #{NAME},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+    <!--大屏-扬尘污染-模块（扬尘污染模块）数据-->
+    <insert id="saveYCWR" parameterType="map">
+        insert into JINSHANXYZ."js_dp_ycwr"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{JZGDNUM},
+            #{JZGDWTS},
+            #{DYXXWRJNUM},
+            #{MTWTS},
+            #{DYXXWTNUM},
+            #{MTNUM},
+            #{JBZNUM},
+            #{JBZWTS},
+            #{DYXXDWNUM},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+    <!--大屏-重点排污单位-模块（重点排污模块数据）-->
+    <insert id="saveZDPWDW" parameterType="map">
+        insert into JINSHANXYZ."js_dp_zdpwdw"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{TOTAL},
+            #{FQNUM},
+            #{PWLIST_NAME},
+            #{PWLIST_FQNUM},
+            #{PWLIST_FSNUM},
+            #{PWLIST_YEAR},
+            #{FSNUM},
+            #{YEAR},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+    <!--***************获取最新小微站数据****************-->
+    <select id="selectLDTSJ" resultType="map">
+        SELECT VAL, "NAME" FROM JINSHANXYZ."js_dp_xwz" WHERE DATA_TIME = (SELECT MAX(DATA_TIME) FROM JINSHANXYZ."js_dp_xwz")
+    </select>
+    <select id="selectOther" resultType="map">
+        SELECT BJNUM, DWNUM, WRSYNUM FROM (
+            SELECT BJNUM, DWNUM, WRSYNUM FROM JINSHANXYZ."js_dp_xwz" WHERE DATA_TIME = (SELECT MAX(DATA_TIME) FROM JINSHANXYZ."js_dp_xwz")
+        ) WHERE ROWNUM = 1
+    </select>
+
+
+    <!--***************获取最新重点排污单位数据****************-->
+    <select id="selectPwSUM" resultType="map">
+        SELECT TOTAL, FQNUM, FSNUM, "YEAR" FROM JINSHANXYZ."js_dp_zdpwdw" WHERE DATA_TIME = (
+                SELECT MAX(DATA_TIME) FROM JINSHANXYZ."js_dp_zdpwdw"
+        ) AND ROWNUM = 1
+    </select>
+    <select id="selectPwList" resultType="map">
+        SELECT PWLIST_NAME, PWLIST_FQNUM, PWLIST_FSNUM, PWLIST_YEAR FROM JINSHANXYZ."js_dp_zdpwdw" WHERE DATA_TIME = (
+                SELECT MAX(DATA_TIME) FROM JINSHANXYZ."js_dp_zdpwdw"
+        )
+    </select>
+</mapper>

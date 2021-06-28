@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.SYRKMapper">
+
+    <!--实有人口数据入库-->
+    <insert id="saveSYRK" parameterType="map">
+        insert into JINSHANXYZ.PEOPLE_COUNT_INFO
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{PEOPLE_TYPE},
+            #{NUM},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+
+</mapper>

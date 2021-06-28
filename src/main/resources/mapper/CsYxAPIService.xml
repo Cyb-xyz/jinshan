@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.CsYxMapper">
+
+    <!--存储城市运行-考核断面数据-->
+    <insert id="khDmSave" parameterType="map">
+        insert into JINSHANXYZ."js_csyx_khdm"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id}, #{lyNum},
+            #{skdbRate}, #{gkdbRate},
+            #{szTypes}, #{yyNum},
+            #{skNum}, #{crjdbRate},
+            #{crjNum}, #{dbbmNum},
+            #{dbRate}, #{gkNum},
+            #{pyNum}, #{update_time},
+        </trim>
+    </insert>
+    <!--存储城市运行-实有人口数据-->
+    <insert id="syRkSave" parameterType="map">
+        insert into JINSHANXYZ."js_csyx_syrk"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id}, #{sumPeople},
+            #{typePeople}, #{update_time},
+        </trim>
+    </insert>
+    <!--存储城市运行-城市交通数据-->
+    <insert id="csJtSave" parameterType="map">
+        insert into JINSHANXYZ."js_csyx_csjt"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id}, #{jsonData}, #{update_date},
+        </trim>
+    </insert>
+    <!--存储城市环境大气数据-->
+    <insert id="cshJdqData" parameterType="map">
+        insert into JINSHANXYZ."js_csyx_cshj_dq"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id}, #{aqiDQRate}, #{aqiMBRate},
+            #{ybList}, #{aqiDQDay}, #{aqiMBDay},
+            #{aqiVal}, #{aqiStatus}, #{aqiColor},
+            #{zdList}, #{aqiPic}, #{update_date},
+        </trim>
+    </insert>
+    <!--删除旧的城市环境大气数据-->
+    <delete id="deleteDqData">
+        delete JINSHANXYZ."js_csyx_cshj_dq"
+    </delete>
+
+
+</mapper>

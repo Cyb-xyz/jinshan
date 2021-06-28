@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置在控制台打印SQL语句-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!--给所有的实体类起别名，方便mapper.xml文件中引用-->
+<!--    <typeAliases>-->
+<!--        <package name="com.jinshan.pojo"/>-->
+<!--    </typeAliases>-->
+    <!--配置mybatis分页拦截器-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper"></plugin>
+    </plugins>
+</configuration>

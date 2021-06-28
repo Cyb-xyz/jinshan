@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.GaoDeMapper">
+
+
+    <!--存储高德_交通路况信息数据-->
+    <insert id="saveJtLkXX" parameterType="map">
+        insert into JINSHANXYZ."js_GaoDe_jtlkxx"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{NAME},
+            #{UTCSECONDS},
+            #{AUTOLRDATAVERSION},
+            #{LINKID},
+            #{TRAVELTIME},
+            #{STATE},
+            #{SPEED},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+    <!--存储高德_交通路况道路ID信息数据-->
+    <insert id="saveJtLkIDXX" parameterType="map">
+        insert into JINSHANXYZ."js_GaoDe_jtlkdl_idxx"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{COORDLIST},
+            #{FORMWAY},
+            #{LENGTH},
+            #{LINKID},
+            #{ROADNAME},
+            #{ROADCLASS},
+            #{NAME},
+            #{UTCSECONDS},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+
+</mapper>

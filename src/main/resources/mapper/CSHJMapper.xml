@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.CSHJMapper">
+
+    <!--*************城市环境空气质量API实时数据入库***********-->
+    <!--1：空气质量预报入库-->
+    <insert id="saveKQZLYB" parameterType="map">
+        insert into JINSHANXYZ.AIR_QUALITY_FORECAST
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{SEG},
+            #{PARAM},
+            #{GRADE},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+    <!--2：当日空气质量信息入库-->
+    <insert id="saveDRKQZLXX" parameterType="map">
+        insert into JINSHANXYZ.AIR_QUALITY_INFO
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{AQIVAL},
+            #{AQISTATUS},
+            #{AQICOLOR},
+            #{AQIMBDAY},
+            #{AQIDQDAY},
+            #{AQIMBRATE},
+            #{AQIDQRATE},
+            #{AQIPIC},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+    <!--3：地区空气质量信息入库-->
+    <insert id="saveDQKQZLXX" parameterType="map">
+        insert into JINSHANXYZ.AREA_AIR_QUALITY_INFO
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{DATA_ID},
+            #{NAME},
+            #{VAL},
+            #{PJ},
+            #{WRW},
+            #{X},
+            #{Y},
+            #{COLOR},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+
+
+    <!--*************城市环境考核断面数据入库***********-->
+    <!-- 考核断面达标情况入库-->
+    <insert id="saveKHDMDBQK" parameterType="map">
+        insert into JINSHANXYZ.WATER_SECTION_GRADE_INFO
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{LYNUM},
+            #{SKDBRATE},
+            #{GKDBRATE},
+            #{YYNUM},
+            #{SKNUM},
+            #{CRJDBRATE},
+            #{CRJNUM},
+            #{DBBMNUM},
+            #{DBRATE},
+            #{GKNUM},
+            #{PYNUM},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+
+    <!-- 全区地表水水质类别入库-->
+    <insert id="saveQKDBSSZLB" parameterType="map">
+        insert into JINSHANXYZ.AREA_WATER_QUALITY_INFO
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{DATA_ID},
+            #{AVERAGENAME},
+            #{TOTAL},
+            #{RATEZB},
+            #{RATEYEAR},
+            #{AVERAGE},
+            #{RATEUPDOWN},
+            #{ISSHOW},
+            #{AVERAGECOLOR},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

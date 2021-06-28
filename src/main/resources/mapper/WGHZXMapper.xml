@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.WGHZXMapper">
+
+    <!--新冠疫苗接种统计-街镇(疫苗类型)入库-->
+    <insert id="saveXGYMJZTJ" parameterType="map">
+        insert into JINSHANXYZ.VACCINATION_TYPE_INFO
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{YMLX},
+            #{REGION_CODE},
+            #{REGION_NAME},
+            #{JZ_JZRS_1},
+            #{JZ_JZRS_2},
+            #{JZ_JZRS},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+
+
+    <!--新冠疫苗接种统计-街镇入库-->
+    <insert id="saveXGYMJZTJ_JZ" parameterType="map">
+        insert into JINSHANXYZ.VACCINATION_STREET_INFO
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{REGION_CODE},
+            #{REGION_NAME},
+            #{YJJZRS},
+            #{JZ_JZRS},
+            #{JZ_JZRS_1},
+            #{JZ_JZRS_2},
+            #{JZ_JZRS_ONE},
+            #{YJJZRS_75},
+            #{JZ_JZWC},
+            #{CJBZ_0},
+            #{CJBZ_1},
+            #{CJBZ_2},
+            #{CJBZ_3},
+            #{CJBZ_4},
+            #{CJBZ_5},
+            #{CJBZ_6},
+            #{CJBZ_7},
+            #{JZ_CQWJZ},
+            #{JZ_JZWC_610},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+
+    <!--区人口-分年龄段统计数据入库(全区和街镇)-->
+    <insert id="saveQRKNLDTJ" parameterType="map">
+        insert into JINSHANXYZ.AREA_POPULATION_AGE_INFO
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{REGIONNAME},
+            #{AGE},
+            #{NUM},
+            #{CREATE_TIME},
+        </trim>
+    </insert>
+
+    <!--获取最新各个街道名称-->
+    <select id="getNewREGIONNAME" resultType="string">
+        SELECT REGIONNAME FROM JINSHANXYZ.AREA_POPULATION_AGE_INFO WHERE REGIONNAME != '全区' AND CREATE_TIME = (
+            SELECT CREATE_TIME FROM (
+                SELECT CREATE_TIME FROM JINSHANXYZ.AREA_POPULATION_AGE_INFO WHERE REGIONNAME != '全区' ORDER BY CREATE_TIME DESC
+            ) WHERE ROWNUM = 1
+        ) GROUP BY REGIONNAME
+    </select>
+
+    <!--根据街道名称获取街镇最新的人员分段数据-->
+    <select id="getJZRYFDSJ" resultType="com.jinshan.pojo.RenKouFD" parameterType="string">
+        SELECT AGE, NUM FROM JINSHANXYZ.AREA_POPULATION_AGE_INFO WHERE REGIONNAME != '全区' AND CREATE_TIME = (
+            SELECT CREATE_TIME FROM (
+                SELECT CREATE_TIME FROM JINSHANXYZ.AREA_POPULATION_AGE_INFO WHERE REGIONNAME != '全区' ORDER BY CREATE_TIME DESC
+            ) WHERE ROWNUM = 1
+        ) AND REGIONNAME = #{name}
+    </select>
+
+
+
+    <!--根据街道名称获取街镇最新的人员分段数据-->
+    <select id="getJZRKFD" resultType="map" parameterType="string">
+        SELECT AGE, NUM FROM JINSHANXYZ.AREA_POPULATION_AGE_INFO WHERE REGIONNAME != '全区' AND CREATE_TIME = (
+            SELECT CREATE_TIME FROM (
+                SELECT CREATE_TIME FROM JINSHANXYZ.AREA_POPULATION_AGE_INFO WHERE REGIONNAME != '全区' ORDER BY CREATE_TIME DESC
+            ) WHERE ROWNUM = 1
+        ) AND REGIONNAME = #{name}
+    </select>
+
+
+</mapper>

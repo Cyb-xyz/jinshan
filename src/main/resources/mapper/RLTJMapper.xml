@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.RLTJMapper">
+
+
+    <!--存储区域人流接口数据-->
+    <insert id="qyrl" parameterType="map">
+        insert into JINSHANXYZ."js_qyrl"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id},
+            #{data},
+            #{data_time},
+        </trim>
+    </insert>
+
+    <!--存储区域人群驻留时长接口数据-->
+    <insert id="zlsc" parameterType="map">
+        insert into JINSHANXYZ."js_qyrqzlsc"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id},
+            #{data},
+            #{data_time},
+        </trim>
+    </insert>
+
+    <!--存储区域人流画像基本信息接口数据-->
+    <insert id="rlhxjbxx" parameterType="map">
+        insert into JINSHANXYZ."js_qyrlhxjbxx"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id},
+            #{data},
+            #{data_time},
+        </trim>
+    </insert>
+
+    <!--行政区全局热力（订阅-热力图）接口数据-->
+    <insert id="xzqqjrl" parameterType="map">
+        insert into JINSHANXYZ."js_xzqqjrl"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id},
+            #{data},
+            #{data_time},
+        </trim>
+    </insert>
+
+
+</mapper>

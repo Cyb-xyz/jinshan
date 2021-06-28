@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.WeiHuaMapper">
+
+
+    <!--企业信息总览信息入库-->
+    <insert id="save_qyxxzl" parameterType="map">
+        insert into JINSHANXYZ."js_wh_qyxxzl"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{DATA3},
+            #{DATA2},
+            #{DATA4},
+            #{ENT1},
+            #{ENT2},
+            #{ENT3},
+            #{ENT4},
+            #{ENT5},
+            #{ENT6},
+            #{PEOPLE1},
+            #{PEOPLE2},
+            #{PEOPLE3},
+            #{PEOPLE4},
+            #{PEOPLE5},
+            #{PEOPLE6},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+    <!--危险化学品总览数据入库-->
+    <insert id="saveWXHXPZL" parameterType="map">
+        insert into JINSHANXYZ."js_wh_wxhxpzl"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{KINDNUM},
+            #{ENTNUM},
+            #{ALLTYPE},
+            #{ALLENT},
+            #{ALLSTORAGE},
+            #{TOXICTYPE},
+            #{TOXICENT},
+            #{TOXICSTORAGE},
+            #{EXPLOSIONTYPE},
+            #{EXPLOSIONENT},
+            #{EXPLOSIONSTORAGE},
+            #{NUMDANGSRC},
+            #{ENTNUMDANGSRC},
+            #{TYPENUM},
+            #{EQUIPNUM},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+    <!--危化车辆，前日累计（辆）数据入库-->
+    <insert id="saveQRLJCL" parameterType="map">
+        insert into JINSHANXYZ."js_wh_whcldrlj"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{TOTAL},
+            #{FLOWTIME},
+            #{LICENSE},
+            #{LICENSECOLOR},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+    <!--危化车辆，实时数量（辆）数据入库-->
+    <insert id="saveSSCSL" parameterType="map">
+        insert into JINSHANXYZ."js_wh_whclsssl"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{TOTAL},
+            #{HIGHWAYCARS},
+            #{LICENSE},
+            #{LICENSECOLOR},
+            #{GAOSU},
+            #{LOCAL},
+            #{DANGEROUSGOODSCARS},
+            #{LOCALCARS},
+            #{NONLOCALCARS},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+    <!--危险船舶数据入库-->
+    <insert id="saveWXCB" parameterType="map">
+        insert into JINSHANXYZ."js_wh_cbsl"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{NUM},
+            #{SHIP},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+
+    <!--地下化工管线数据入库-->
+    <insert id="saveDXHGGX" parameterType="map">
+        insert into JINSHANXYZ."js_wh_dxhggx"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{SPECIES},
+            #{MILEAGE},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+
+    <!--监管动态总览数据入库-->
+    <insert id="saveJGDTZL" parameterType="map">
+        insert into JINSHANXYZ."js_wh_jgztzl"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{PEOPLE},
+            #{COMPANIES},
+            #{PUNISH},
+            #{AMOUNT},
+            #{DEVICES},
+            #{LAWONLINE},
+            #{INSPECTIONRATE},
+            #{RECTIFICATIONRATE},
+            #{PUNISHRATE},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+
+</mapper>

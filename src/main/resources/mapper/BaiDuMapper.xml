@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinshan.dao.BaiDuMapper">
+
+    <!--存储重点道路路段排行数据-->
+    <insert id="zDdlLdPhSave" parameterType="map">
+        insert into JINSHANXYZ."js_BaiDu_zddlLdPh"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id}, #{rank}, #{roadsegId},
+            #{roadname}, #{semantic}, #{congestIndex},
+            #{congestSpeed}, #{congestLength}, #{roadNetworkName},
+            #{sparseLoc}, #{roadsegIdBase64}, #{datatime},
+            #{dataInsertDate},
+        </trim>
+    </insert>
+
+    <!--存储重点道路道路排行数据-->
+    <insert id="zddl_dlPhSave" parameterType="map">
+        insert into JINSHANXYZ."js_BaiDu_zddl_dlPh"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id}, #{rank}, #{roadId},
+            #{roadname}, #{roadnameEN}, #{congestIndex},
+            #{congestSpeed}, #{congestLength}, #{roadNetworkName},
+            #{sparseLoc}, #{roadIdBase64}, #{datatime},
+            #{dataInsertDate},
+        </trim>
+    </insert>
+
+    <!--存储重点道路信息数据-->
+    <insert id="zddlXxSave" parameterType="map">
+        insert into JINSHANXYZ."js_BaiDu_zddl_xx"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id}, #{nodeName}, #{roadId},
+            #{roadname}, #{roadNetworkName}, #{roadnameEN},
+            #{roadsegId}, #{roadsegLength}, #{semantic},
+            #{roadsegStartName}, #{roadsegEndName}, #{direction},
+            #{sparseLoc},#{roadIdBase64},#{roadsegIdBase64},
+            #{dataInsertDate},
+        </trim>
+    </insert>
+
+    <!--存储重点道路道路拥堵指标详情数据-->
+    <insert id="zddlDlYdZbXq" parameterType="map">
+        insert into JINSHANXYZ."js_BaiDu_zddl_dlydzbxq"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id},
+            #{list},
+            #{total_roadLength},#{total_avgCongestIndex},
+            #{total_avgCongestSpeed}, #{total_avgCongestLength},
+            #{compareList},
+            #{compareTotal_roadLength}, #{compareTotal_avgCongestIndex},
+            #{compareTotal_avgCongestSpeed}, #{compareTotal_avgCongestLength},
+            #{dataInsertDate},
+        </trim>
+    </insert>
+
+    <!--存储重点道路路段拥堵指标详情数据-->
+    <insert id="zddlLdYdZbXq" parameterType="map">
+        insert into JINSHANXYZ."js_BaiDu_zddl_ldydzbxq"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{id},
+            #{list},
+            #{total_roadsegLength},#{total_avgCongestIndex},
+            #{total_avgCongestSpeed}, #{total_avgCongestLength},
+            #{compareList},
+            #{compareTotal_roadsegLength}, #{compareTotal_avgCongestIndex},
+            #{compareTotal_avgCongestSpeed}, #{compareTotal_avgCongestLength},
+            #{dataInsertDate},
+        </trim>
+    </insert>
+
+    <!--百度——路段拥堵指标详情入库   新的。-->
+    <insert id="saveLDYDZBXQ" parameterType="map">
+        insert into JINSHANXYZ."js_bd_ldydzbxq"
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            #{ID},
+            #{SEMANTIC},
+            #{DATATIME},
+            #{CONGESTSPEED},
+            #{CONGESTINDEX},
+            #{CONGESTLENGTH},
+            #{ROADNAME},
+            #{ROADSEGLENGTH},
+            #{AVGCONGESTINDEX},
+            #{AVGCONGESTSPEED},
+            #{AVGCONGESTLENGTH},
+            #{TIME},
+            #{DATA_TIME},
+        </trim>
+    </insert>
+
+    <select id="selectLDID" resultType="string">
+        SELECT
+            "roadsegId"
+            FROM JINSHANXYZ."js_BaiDu_zddl_xx" WHERE "dataInsertDate" = (
+                SELECT "dataInsertDate" FROM (
+                    SELECT "dataInsertDate" FROM JINSHANXYZ."js_BaiDu_zddl_xx" GROUP BY "dataInsertDate" ORDER BY "dataInsertDate" DESC
+                )WHERE ROWNUM = 1
+        )
+    </select>
+</mapper>
